@@ -1,23 +1,48 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet"  href="css/style.css"></script>
   </head>
   <body>
-    <h1>Hi</h1>
-    <ul>
-      <li>
-        <h2>Catty</h2>
-        <img id="cat-pic" src="img/cat.jpg" />
-        <p>Count: <span id="counter" >0</span></p>
-      </li>
-      <li>
-        <h2>Peter</h2>
-        <img id="cat-pic2" src="img/cat2.jpg" />
-        <p>Count: <span id="counter2" >0</span></p>
-      </li>
-
+    <ul id="catList">
+      <li class="catList" >Cat1</li>
+      <li class="catList" >Cat2</li>
+      <li class="catList" >Cat3</li>
+      <li class="catList" >Cat4</li>
+      <li class="catList" >Cat5</li>
     </ul>
+    <div id="catView">
+      <h2 id="catName">Peter</h2>
+      <img id="catPic" src="img/cat.jpg" />
+      <p>Count: <span id="counter" >0</span></p>
+    </div>
     
-    <script src='js/functions.js'></script>
+<!--     <script src='js/functions.js'></script> -->
+    
+    <script>
+      let cats = [
+        { name: 'Scrappy', clicks: 0, img: '/img/cat1.jpg' },
+        { name: 'Mr Mistoffelees', clicks: 0, img: '/img/cat2.jpg' },
+        { name: 'Garfield', clicks: 0, img: '/img/cat3.jpg' },
+        { name: 'Felix', clicks: 0, img: '/img/cat4.jpg' },
+        { name: 'Sylvetor', clicks: 0, img: '/img/cat5.jpg' },
+      ];
+
+      const counter = document.getElementById('counter');
+
+      function addClick(z) {
+        console.log(z);
+        let x = 0;
+        cats[x].clicks += 1;
+        counter.innerHTML = cats[x].clicks;
+      }
+
+      var c = document.getElementsByClassName('catList');
+      for ( var g = 0; g <= c.length-1; g++) {
+        c[g].addEventListener('click', function () { addClick('ba') }, false);
+      }
+
+    </script>
+
   </body>
 </html>
