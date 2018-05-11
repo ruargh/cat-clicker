@@ -32,14 +32,15 @@
 
       function addClick(z) {
         console.log(z);
-        let x = 0;
+        let x = z;
         cats[x].clicks += 1;
         counter.innerHTML = cats[x].clicks;
       }
 
       var c = document.getElementsByClassName('catList');
       for ( var g = 0; g <= c.length-1; g++) {
-        c[g].addEventListener('click', function () { addClick('ba') }, false);
+        let b = g;
+        c[g].addEventListener('click', function () { addClick(b) }, false);
       }
 
     </script>
