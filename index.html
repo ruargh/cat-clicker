@@ -21,18 +21,30 @@
     
     <script>
       let cats = [
-        { name: 'Scrappy', clicks: 0, img: '/img/cat1.jpg' },
-        { name: 'Mr Mistoffelees', clicks: 0, img: '/img/cat2.jpg' },
-        { name: 'Garfield', clicks: 0, img: '/img/cat3.jpg' },
-        { name: 'Felix', clicks: 0, img: '/img/cat4.jpg' },
-        { name: 'Sylvetor', clicks: 0, img: '/img/cat5.jpg' },
+        { name: 'Scrappy', clicks: 0, img: 'img/cat.jpg' },
+        { name: 'Mr Mistoffelees', clicks: 0, img: 'img/cat2.jpg' },
+        { name: 'Garfield', clicks: 0, img: 'img/cat3.jpg' },
+        { name: 'Felix', clicks: 0, img: 'img/cat4.jpg' },
+        { name: 'Sylvestor', clicks: 0, img: 'img/cat5.jpg' },
       ];
+
+      let activeCat = 0;
 
       const counter = document.getElementById('counter');
 
-      function addClick(z) {
+      function showCat(z) {
         console.log(z);
         let x = z;
+        var name = document.getElementById('catName');
+        var img = document.getElementById('catPic');
+        counter.innerHTML = cats[x].clicks;
+        name.innerHTML = cats[x].name;
+        img.src = cats[x].img;
+        activeCat = x;
+      }
+
+      function addClick() {
+        let x = activeCat;
         cats[x].clicks += 1;
         counter.innerHTML = cats[x].clicks;
       }
@@ -40,8 +52,11 @@
       var c = document.getElementsByClassName('catList');
       for ( var g = 0; g <= c.length-1; g++) {
         let b = g;
-        c[g].addEventListener('click', function () { addClick(b) }, false);
+        c[g].addEventListener('click', function () { showCat(b) }, false);
       }
+
+      var activeImg = document.getElementById('catPic');
+        activeImg.addEventListener('click', addClick, false);
 
     </script>
 
