@@ -1,1 +1,20 @@
-extends: airbnb-base
+env:
+  browser: true
+  es6: true
+extends: [
+  'eslint:recommended',
+  'jquery'
+],
+rules:
+  indent:
+    - error
+    - 4
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - never

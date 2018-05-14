@@ -1,64 +1,15 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet"  href="css/style.css"></script>
-  </head>
-  <body>
-    <ul id="catList">
-      <li class="catList" >Cat1</li>
-      <li class="catList" >Cat2</li>
-      <li class="catList" >Cat3</li>
-      <li class="catList" >Cat4</li>
-      <li class="catList" >Cat5</li>
-    </ul>
-    <div id="catView">
-      <h2 id="catName">Peter</h2>
-      <img id="catPic" src="img/cat.jpg" />
-      <p>Count: <span id="counter" >0</span></p>
-    </div>
-    
-<!--     <script src='js/functions.js'></script> -->
-    
-    <script>
-      let cats = [
-        { name: 'Scrappy', clicks: 0, img: 'img/cat.jpg' },
-        { name: 'Mr Mistoffelees', clicks: 0, img: 'img/cat2.jpg' },
-        { name: 'Garfield', clicks: 0, img: 'img/cat3.jpg' },
-        { name: 'Felix', clicks: 0, img: 'img/cat4.jpg' },
-        { name: 'Sylvestor', clicks: 0, img: 'img/cat5.jpg' },
-      ];
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Clicker Premium Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <ul id="catList" class="catList"></ul>
+    <div id="catView"></div>
 
-      let activeCat = 0;
-
-      const counter = document.getElementById('counter');
-
-      function showCat(z) {
-        console.log(z);
-        let x = z;
-        var name = document.getElementById('catName');
-        var img = document.getElementById('catPic');
-        counter.innerHTML = cats[x].clicks;
-        name.innerHTML = cats[x].name;
-        img.src = cats[x].img;
-        activeCat = x;
-      }
-
-      function addClick() {
-        let x = activeCat;
-        cats[x].clicks += 1;
-        counter.innerHTML = cats[x].clicks;
-      }
-
-      var c = document.getElementsByClassName('catList');
-      for ( var g = 0; g <= c.length-1; g++) {
-        let b = g;
-        c[g].addEventListener('click', function () { showCat(b) }, false);
-      }
-
-      var activeImg = document.getElementById('catPic');
-        activeImg.addEventListener('click', addClick, false);
-
-    </script>
-
-  </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
 </html>
