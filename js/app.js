@@ -108,7 +108,7 @@ $(() => {
             // for ( var g = 0; g <= c.length-1; g++) {
             //     let b = g;
             //     c[g].addEventListener('click', function () { 
-            //         model.activeCat = octopus.getCats()[3];
+            //         model.activeCat = octopus.getCats()[b];
             //         catView.render();
             //     }, false);
             // }

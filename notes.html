@@ -63,3 +63,41 @@
       
         </body>
       </html>
+
+
+
+
+      var catListView = {
+        init: () => {
+            this.catList = $('#catList');
+            this.render();
+        },
+        showCat: function(z)  {
+            console.log(z);
+            let x = z;
+            var name = $('#catName');
+            var img = $('#catPic');
+            var counter = $('#counter');
+            var cats = octopus.getCats();
+            counter.innerHTML = cats[x].clicks;
+            name.innerHTML = cats[x].name;
+            img.src = cats[x].img;
+            //activeCat = x;
+        },
+        render: () => {
+            var htmlStr = '';
+            octopus.getCats().forEach(cat => {
+                htmlStr += '<li class="catList-item" >' + cat.name + '</li>';
+                this.catList.html( htmlStr ); 
+            });
+            var c = $('.catList-item');
+            console.log('c: ' + c.length);
+            for ( var g = 0; g <= c.length-1; g++) {
+                let b = g;
+                c[g].addEventListener('click', function () { 
+                    this.showCat(b);
+                }, false);
+            }
+
+        }
+    };
