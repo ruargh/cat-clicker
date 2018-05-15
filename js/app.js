@@ -23,8 +23,7 @@ $(() => {
         init: () => {
             model.init();
             model.activeCat = model.getAllCats()[1];
-            console.log(model.activeCat)
-            //catListView.init();
+            catListView.init();
             catView.init();
         },
         getCats: () => {
@@ -50,7 +49,6 @@ $(() => {
         },
         render: function() {
             var theCat = octopus.getActiveCat();
-            console.log(theCat);
             // this.catName.innerHTML = theCat.name;
             // this.catImg.src = theCat.img;
             // this.catCounter.innerHTML = theCat.counter;
@@ -60,6 +58,27 @@ $(() => {
         }
     };
 
+    var catListView = {
+        init: function() {
+            this.catList = document.getElementById('catList');
+            this.render();
+        },
+        render: function() {
+            var htmlStr = '';
+            octopus.getCats().forEach(cat => {
+                htmlStr += '<li class="catList-item" >' + cat.name + '</li>';
+                //this.catList.innerHtml( htmlStr ); 
+            });
+            var c = $('.catList-item');
+            console.log('c: ' + c.length);
+            for ( var g = 0; g <= c.length-1; g++) {
+                let b = g;
+                c[g].addEventListener('click', function () { 
+                    this.showCat(b);
+                }, false);
+            }
+        }
+    };
 
     octopus.init();
 
