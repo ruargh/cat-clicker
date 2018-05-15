@@ -15,53 +15,51 @@ $(() => {
         },
         getAllCats: () => {
             return JSON.parse(localStorage.cats);
-        }
+        },
+        activeCat: null,
     };
 
     var octopus = {
         init: () => {
             model.init();
-            view.init();
+            model.activeCat = model.getAllCats()[1];
+            console.log(model.activeCat)
+            //catListView.init();
+            catView.init();
         },
         getCats: () => {
             return model.getAllCats();
         },
-    };
-
-    var view = {
-        init: () => {
-            this.catList = $('#catList');
-            view.render();
-        },
-        showCat: function(z)  {
-            console.log(z);
-            let x = z;
-            var name = $('#catName');
-            var img = $('#catPic');
-            var counter = $('#counter');
-            var cats = octopus.getCats();
-            counter.innerHTML = cats[x].clicks;
-            name.innerHTML = cats[x].name;
-            img.src = cats[x].img;
-            //activeCat = x;
-        },
-        render: () => {
-            var htmlStr = '';
-            octopus.getCats().forEach(cat => {
-                htmlStr += '<li class="catList-item" >' + cat.name + '</li>';
-                this.catList.html( htmlStr ); 
-            });
-            var c = $('.catList-item');
-            console.log('c: ' + c.length);
-            for ( var g = 0; g <= c.length-1; g++) {
-                let b = g;
-                c[g].addEventListener('click', function () { 
-                    view.showCat(b);
-                }, false);
-            }
-
+        getActiveCat: () => {
+            return model.activeCat;
         }
     };
+
+    var catView = {
+        init: function() {
+
+            // this.catName = $('#catName');
+            // this.catImg = $('#catPic');
+            // this.catCounter = $('#counter');
+            this.catElement = document.getElementById('catView');
+            this.catName = document.getElementById('catName');
+            this.catImg = document.getElementById('catPic');
+            this.catCounter = document.getElementById('catCounter');
+
+            this.render();
+        },
+        render: function() {
+            var theCat = octopus.getActiveCat();
+            console.log(theCat);
+            // this.catName.innerHTML = theCat.name;
+            // this.catImg.src = theCat.img;
+            // this.catCounter.innerHTML = theCat.counter;
+            this.catName.textContent = theCat.name;
+            this.catImg.src = theCat.img;
+            this.catCounter.textContent = theCat.clicks;
+        }
+    };
+
 
     octopus.init();
 
